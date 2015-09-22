@@ -6,6 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="DataTemplate1">
+            <RelativePanel>
+                <Border x:Name="colorBorder" Background="{Binding Brush}" Width="50" Height="50"/>
+                <TextBlock Text="{Binding Name}" RelativePanel.RightOf="colorBorder"/>
+            </RelativePanel>
+        </DataTemplate>
+    </Page.Resources>
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -16,7 +24,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="blueBorder.(RelativePanel.RightOf)" Value="redBorder"/>
-                        <Setter Target="wideOnlyButton.(UIElement.Visibility)" Value="Visible"/>
+                        <Setter Target="wideOnlyList.(UIElement.Visibility)" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Narrow">
@@ -31,16 +39,17 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Border x:Name="redBorder" Width="500" Height="500" Background="#FFCA1919" />
+        <Border x:Name="redBorder" Width="500" Height="500" Background="#FFCA1919" Tapped="RedBorder_OnTapped"/>
         <Border x:Name="blueBorder" Width="200" Height="300" Background="#FF8B7AE1" Tapped="BlueBorder_OnTapped"/>
-        <Button x:Name="wideOnlyButton" x:DeferLoadStrategy="Lazy" Click="wideOnlyButton_Click" Content="wide only" RelativePanel.AlignHorizontalCenterWith="blueBorder" RelativePanel.AlignVerticalCenterWith="blueBorder" Visibility="Collapsed">
-            <Button.Transitions>
+        <ListView x:Name="wideOnlyList" x:DeferLoadStrategy="Lazy" RelativePanel.AlignHorizontalCenterWith="blueBorder" RelativePanel.AlignVerticalCenterWith="blueBorder" Visibility="Collapsed"
+                  ItemsSource="{Binding ColorVmis}" ItemTemplate="{StaticResource DataTemplate1}">
+            <ListView.Transitions>
                 <TransitionCollection>
                     <EntranceThemeTransition FromVerticalOffset="100"/>
                     <AddDeleteThemeTransition/>
                     <ContentThemeTransition HorizontalOffset="200" VerticalOffset="0"/>
                 </TransitionCollection>
-            </Button.Transitions>
-        </Button>
+            </ListView.Transitions>
+        </ListView>
     </RelativePanel>
 </Page>
