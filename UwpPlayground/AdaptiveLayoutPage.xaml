@@ -12,17 +12,18 @@
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600"/>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="border1.(RelativePanel.RightOf)" Value="border"/>
+                        <Setter Target="blueBorder.(RelativePanel.RightOf)" Value="redBorder"/>
+                        <Setter Target="wideOnlyButton.(UIElement.Visibility)" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Narrow">
                 </VisualState>
                 <VisualState x:Name="Middle">
                     <VisualState.Setters>
-                        <Setter Target="border1.(RelativePanel.AlignRightWith)" Value="border"/>
+                        <Setter Target="blueBorder.(RelativePanel.AlignRightWith)" Value="redBorder"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="400"/>
@@ -30,7 +31,16 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Border x:Name="border" Width="500" Height="500" Background="#FFCA1919" />
-        <Border x:Name="border1" Width="200" Height="300" Background="#FF8B7AE1" />
+        <Border x:Name="redBorder" Width="500" Height="500" Background="#FFCA1919" />
+        <Border x:Name="blueBorder" Width="200" Height="300" Background="#FF8B7AE1" Tapped="BlueBorder_OnTapped"/>
+        <Button x:Name="wideOnlyButton" x:DeferLoadStrategy="Lazy" Click="wideOnlyButton_Click" Content="wide only" RelativePanel.AlignHorizontalCenterWith="blueBorder" RelativePanel.AlignVerticalCenterWith="blueBorder" Visibility="Collapsed">
+            <Button.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition FromVerticalOffset="100"/>
+                    <AddDeleteThemeTransition/>
+                    <ContentThemeTransition HorizontalOffset="200" VerticalOffset="0"/>
+                </TransitionCollection>
+            </Button.Transitions>
+        </Button>
     </RelativePanel>
 </Page>
