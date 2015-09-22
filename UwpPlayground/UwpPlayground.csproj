@@ -96,6 +96,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdaptiveLayoutPage.xaml.cs">
+      <DependentUpon>AdaptiveLayoutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

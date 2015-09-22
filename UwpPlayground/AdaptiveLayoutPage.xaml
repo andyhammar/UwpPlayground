@@ -7,28 +7,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-<!--        <VisualStateManager.VisualStateGroups>
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="500"/>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="border1.(RelativePanel.RightOf)" Value="border"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Narrow">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1"/>
-                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Middle">
                     <VisualState.Setters>
-                        <Setter Target="border1.(RelativePanel.Below)" Value="border"/>
+                        <Setter Target="border1.(RelativePanel.AlignRightWith)" Value="border"/>
                     </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400"/>
+                    </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-    -->    <Border x:Name="border" Width="500" Height="500" Background="#FFCA1919" />
-        <Border x:Name="border1" Width="400" Height="400" Background="#FF8B7AE1" />
-    </Grid>
+        <Border x:Name="border" Width="500" Height="500" Background="#FFCA1919" />
+        <Border x:Name="border1" Width="200" Height="300" Background="#FF8B7AE1" />
+    </RelativePanel>
 </Page>
