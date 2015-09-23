@@ -73,7 +73,6 @@ namespace UwpPlayground
 
             var systemNavigationManager = SystemNavigationManager.GetForCurrentView();
             systemNavigationManager.BackRequested += App_BackRequested;
-            //systemNavigationManager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
         }
 
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
