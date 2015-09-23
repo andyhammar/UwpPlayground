@@ -21,7 +21,15 @@ namespace UwpPlayground
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var canGoBack = ((Frame)Window.Current.Content).CanGoBack;
+            var frame = Window.Current.Content as Frame;
+            if (frame == null)
+            {
+                frame = Frame;
+                if (frame == null)
+                    return;
+            }
+
+            var canGoBack = frame.CanGoBack;
             var appViewBackButtonVisibility = canGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 appViewBackButtonVisibility;

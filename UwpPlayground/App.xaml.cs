@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -34,6 +35,87 @@ namespace UwpPlayground
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
+            var lastState = e.PreviousExecutionState;
+            switch (lastState)
+            {
+                case ApplicationExecutionState.NotRunning:
+                    break;
+                case ApplicationExecutionState.Running:
+                    break;
+                case ApplicationExecutionState.Suspended:
+                    break;
+                case ApplicationExecutionState.Terminated:
+                    break;
+                case ApplicationExecutionState.ClosedByUser:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            var kind = e.Kind;
+            switch (kind)
+            {
+                case ActivationKind.Launch:
+                    break;
+                case ActivationKind.Search:
+                    break;
+                case ActivationKind.ShareTarget:
+                    break;
+                case ActivationKind.File:
+                    break;
+                case ActivationKind.Protocol:
+                    break;
+                case ActivationKind.FileOpenPicker:
+                    break;
+                case ActivationKind.FileSavePicker:
+                    break;
+                case ActivationKind.CachedFileUpdater:
+                    break;
+                case ActivationKind.ContactPicker:
+                    break;
+                case ActivationKind.Device:
+                    break;
+                case ActivationKind.PrintTaskSettings:
+                    break;
+                case ActivationKind.CameraSettings:
+                    break;
+                case ActivationKind.RestrictedLaunch:
+                    break;
+                case ActivationKind.AppointmentsProvider:
+                    break;
+                case ActivationKind.Contact:
+                    break;
+                case ActivationKind.LockScreenCall:
+                    break;
+                case ActivationKind.VoiceCommand:
+                    break;
+                case ActivationKind.LockScreen:
+                    break;
+                case ActivationKind.PickerReturned:
+                    break;
+                case ActivationKind.WalletAction:
+                    break;
+                case ActivationKind.PickFileContinuation:
+                    break;
+                case ActivationKind.PickSaveFileContinuation:
+                    break;
+                case ActivationKind.PickFolderContinuation:
+                    break;
+                case ActivationKind.WebAuthenticationBrokerContinuation:
+                    break;
+                case ActivationKind.WebAccountProvider:
+                    break;
+                case ActivationKind.ComponentUI:
+                    break;
+                case ActivationKind.ProtocolForResults:
+                    break;
+                case ActivationKind.ToastNotification:
+                    break;
+                case ActivationKind.DialReceiver:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -49,12 +131,14 @@ namespace UwpPlayground
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
-                
+
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
+                    var naviState = (string)ApplicationData.Current.LocalSettings.Values["naviState"];
+                    rootFrame.SetNavigationState(naviState);
                 }
 
                 // Place the frame in the current Window
@@ -66,7 +150,7 @@ namespace UwpPlayground
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof (MainPage), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();
@@ -91,7 +175,7 @@ namespace UwpPlayground
         /// </summary>
         /// <param name="sender">The Frame which failed navigation</param>
         /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
@@ -106,6 +190,10 @@ namespace UwpPlayground
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
+
+            var navigationState = ((Frame) Window.Current.Content).GetNavigationState();
+            ApplicationData.Current.LocalSettings.Values["naviState"] = navigationState;
+
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }

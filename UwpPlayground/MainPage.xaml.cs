@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -29,6 +30,8 @@ namespace UwpPlayground
         {
             this.InitializeComponent();
 
+            Debug.WriteLine("MainPage ctor");
+            NavigationCacheMode = NavigationCacheMode.Required;
 
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 500));
         }
