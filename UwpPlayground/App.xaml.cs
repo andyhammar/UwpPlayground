@@ -34,8 +34,63 @@ namespace UwpPlayground
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            ApplicationData.Current.DataChanged += Current_DataChanged;
 
             var lastState = e.PreviousExecutionState;
+            CheckState(lastState);
+            var kind = e.Kind;
+            CheckKind(kind);
+
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                this.DebugSettings.EnableFrameRateCounter = true;
+            }
+#endif
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                {
+                    //TODO: Load state from previously suspended application
+                    var naviState = (string)ApplicationData.Current.LocalSettings.Values["naviState"];
+                    rootFrame.SetNavigationState(naviState);
+                }
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null)
+            {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                rootFrame.Navigate(typeof (MainPage), e.Arguments);
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
+
+            var systemNavigationManager = SystemNavigationManager.GetForCurrentView();
+            systemNavigationManager.BackRequested += App_BackRequested;
+        }
+
+        private void Current_DataChanged(ApplicationData sender, object args)
+        {
+            //is this only for a roaming change?
+        }
+
+        private static void CheckState(ApplicationExecutionState lastState)
+        {
             switch (lastState)
             {
                 case ApplicationExecutionState.NotRunning:
@@ -51,7 +106,10 @@ namespace UwpPlayground
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            var kind = e.Kind;
+        }
+
+        private static void CheckKind(ActivationKind kind)
+        {
             switch (kind)
             {
                 case ActivationKind.Launch:
@@ -115,48 +173,6 @@ namespace UwpPlayground
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
-
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
-            {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                    var naviState = (string)ApplicationData.Current.LocalSettings.Values["naviState"];
-                    rootFrame.SetNavigationState(naviState);
-                }
-
-                // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
-            }
-
-            if (rootFrame.Content == null)
-            {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof (MainPage), e.Arguments);
-            }
-            // Ensure the current window is active
-            Window.Current.Activate();
-
-            var systemNavigationManager = SystemNavigationManager.GetForCurrentView();
-            systemNavigationManager.BackRequested += App_BackRequested;
         }
 
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
