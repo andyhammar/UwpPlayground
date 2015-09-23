@@ -35,7 +35,8 @@
         </Style>
     </Page.Resources>
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                   Tapped="RelativePanel_Tapped">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Wide">
@@ -60,6 +61,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Border x:Name="redBorder" Width="500" Height="500" Background="#FFCA1919" Tapped="RedBorder_OnTapped"/>
+        <TextBlock Text="{x:Bind RedText, Mode=OneWay}" Foreground="White" RelativePanel.AlignHorizontalCenterWith="redBorder" RelativePanel.AlignVerticalCenterWith="redBorder"></TextBlock>
         <Border x:Name="blueBorder" Width="200" Height="300" Background="#FF8B7AE1" Tapped="BlueBorder_OnTapped"/>
         <ListView x:Name="wideOnlyList" x:DeferLoadStrategy="Lazy" RelativePanel.AlignHorizontalCenterWith="blueBorder" RelativePanel.AlignVerticalCenterWith="blueBorder" Visibility="Collapsed"
                   ItemsSource="{Binding ColorVmis}" ItemTemplate="{StaticResource DataTemplate1}" ItemContainerStyle="{StaticResource ListViewItemStyle1}" Width="{Binding ActualWidth, ElementName=blueBorder}">
@@ -71,5 +73,11 @@
                 </TransitionCollection>
             </ListView.Transitions>
         </ListView>
+        <StackPanel RelativePanel.AlignBottomWithPanel="True" Orientation="Horizontal">
+            <Button x:Name="button1" Content="Button 1" Click="Button1_OnClick" Width="200" Height="50"/>
+            <Button x:Name="button2" Content="Button 2" Click="Button2_OnClick" Width="200" Height="50"/>
+            <Button x:Name="suspendingBindingsButton" Content="suspend bindings" Click="SuspendingBindingsButton_OnClick" Width="200" Height="50"/>
+            <Button x:Name="resumeBindingsButton" Content="resume bindings" Click="ResumeBindingsButton_OnClick" Width="200" Height="50"/>
+        </StackPanel>
     </RelativePanel>
 </Page>
