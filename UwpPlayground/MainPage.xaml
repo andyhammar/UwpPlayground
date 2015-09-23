@@ -6,12 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-<StackPanel RelativePanel.AlignVerticalCenterWithPanel="True"
+        <StackPanel RelativePanel.AlignVerticalCenterWithPanel="True"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
             >
-    <Button Content="AdaptiveLayoutPage" FontSize="36" Click="ButtonBase_OnClick"></Button>
-</StackPanel>
+            <Button Content="AdaptiveLayoutPage" FontSize="36" Click="ButtonBase_OnClick" ></Button>
+            <Button Content="DevicePage" FontSize="36" Click="ButtonBase_OnClick" ></Button>
+            <Button Content="D2dPage" FontSize="36" Click="ButtonBase_OnClick"></Button>
+        </StackPanel>
     </RelativePanel>
 </Page>
