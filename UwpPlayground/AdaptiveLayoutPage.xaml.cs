@@ -6,10 +6,12 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 using UwpPlayground.Annotations;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -41,11 +43,11 @@ namespace UwpPlayground
             var systemColors = colors.Select(x => new { x.Name, Brush = new SolidColorBrush((Color)x.GetValue(x)) }).ToList();
 
             var allColors = new List<object>();
-            for (byte i = 0; i <= 254; i = (byte)Math.Min(255, i + 10))
+            for (byte i = 0; i <= 254; i = (byte)Math.Min(255, i + 40))
             {
-                for (byte j = 0; j <= 254; j = (byte)Math.Min(255, j + 10))
+                for (byte j = 0; j <= 254; j = (byte)Math.Min(255, j + 40))
                 {
-                    for (byte k = 0; k <= 254; k = (byte)Math.Min(255, k + 10))
+                    for (byte k = 0; k <= 254; k = (byte)Math.Min(255, k + 40))
                     {
                         var color = new {Name=$"{i},{j},{k}", Brush=new SolidColorBrush(Color.FromArgb(255, i, j, k))};
                         allColors.Add(color);
@@ -58,6 +60,15 @@ namespace UwpPlayground
             DataContext = this;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var canGoBack = ((Frame)Window.Current.Content).CanGoBack;
+            var appViewBackButtonVisibility = canGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                appViewBackButtonVisibility;
+
+        }
 
         private void BlueBorder_OnTapped(object sender, TappedRoutedEventArgs e)
         {
