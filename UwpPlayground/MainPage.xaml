@@ -21,6 +21,7 @@
             <Button Content="D2dPage" FontSize="36" Click="ButtonBase_OnClick"></Button>
             <Button Content="AppDataPage" FontSize="36" Click="ButtonBase_OnClick"></Button>
             <Button Content="TilePage" FontSize="36" Click="ButtonBase_OnClick"></Button>
+            <Button Content="AppServicePage" FontSize="36" Click="ButtonBase_OnClick"></Button>
         </StackPanel>
     </RelativePanel>
 </local:PageBase>
