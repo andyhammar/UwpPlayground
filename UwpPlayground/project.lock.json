@@ -232,6 +232,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Runtime": "[4.0.20, )",
@@ -1839,6 +1847,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3481,6 +3497,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -5130,6 +5154,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Runtime": "[4.0.20, )",
@@ -6770,6 +6802,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8419,6 +8459,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Runtime": "[4.0.20, )",
@@ -10059,6 +10107,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/10240.0.6": {
+        "compile": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -12132,6 +12188,27 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "package/services/metadata/core-properties/1d4eb9d0228b48b88d2df3822fba2d86.psmdcp",
+        "[Content_Types].xml"
+      ]
+    },
+    "NotificationsExtensions.Win10/10240.0.6": {
+      "sha512": "kh33b5LBs1jLRpYZ66SaicwcSg/vwhdZGfmKGuBTBgf7AwoycYYsN5DgkaJjJhxDaak1D21/ZzhLH3HHjiRQaw==",
+      "type": "Package",
+      "files": [
+        "_rels/.rels",
+        "NotificationsExtensions.Win10.nuspec",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.dll",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.pdb",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.XML",
+        "lib/uap10.0/NotificationsExtensions.winmd",
+        "lib/uap10.0/NotificationsExtensions.pri",
+        "lib/uap10.0/NotificationsExtensions.pdb",
+        "lib/uap10.0/NotificationsExtensions.xml",
+        "lib/uap10.0/NotificationsExtensions.winmd.xml",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.dll",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.pdb",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.XML",
+        "package/services/metadata/core-properties/f4c9f1cad9444e4abe5b980736afea18.psmdcp",
         "[Content_Types].xml"
       ]
     },
@@ -14836,7 +14913,8 @@
       "Microsoft.ApplicationInsights >= 1.0.0",
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "NotificationsExtensions.Win10 >= 10240.0.6"
     ],
     "UAP,Version=v10.0": []
   }
