@@ -111,6 +111,9 @@
     <Compile Include="D2dPage.xaml.cs">
       <DependentUpon>D2dPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BatteryPage.xaml.cs">
+      <DependentUpon>BatteryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DevicePage.xaml.cs">
       <DependentUpon>DevicePage.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
     <Page Include="DeviceFamily-Mobile\DevicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BatteryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="DevicePage.xaml">
       <SubType>Designer</SubType>
